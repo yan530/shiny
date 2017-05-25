@@ -142,6 +142,9 @@ $.extend(FileUploader.prototype, FileProcessor.prototype);
         self.$setActive(false);
         self.onProgress(null, 1);
         self.$bar().text('Upload complete');
+        // Reset the file input's value to "". This allows the same file to be
+        // uploaded again. https://stackoverflow.com/a/22521275
+        $(evt.el).val("");
       },
       function(error) {
         self.onError(error);
